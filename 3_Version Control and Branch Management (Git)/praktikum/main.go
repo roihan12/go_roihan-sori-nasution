@@ -7,6 +7,5 @@ func main() {
 
   fmt.Print("Hello, ")
   fmt.Print("World!")
-  fmt.Println("Development")
 }
 
