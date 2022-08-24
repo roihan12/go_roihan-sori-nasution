@@ -8,5 +8,6 @@ func main() {
   fmt.Print("Hello, ")
   fmt.Print("World!")
   fmt.Println("Feature A")
+  fmt.Println("Feature A sub")
 }
 
