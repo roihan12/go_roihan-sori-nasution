@@ -5,23 +5,40 @@ import (
 	"strconv"
 )
 
-func munculSekali(angka string) int  {
+func munculSekali(angka string) []int  {
 
-	berubah := []string{}
+	angkaString := []string{}
 	for i := range angka {
-		kata := string(angka[i])
-		berubah = append(berubah, kata)
+		angka:= string(angka[i])
+		angkaString = append(angkaString, angka)
 	}
 
-	var t2 = []int{}
-	for _, i := range berubah {
+	checkAngka := []string{}
+	for i := 0; i < len(angkaString); i++ {
+		for j := i + 1; j < len(angkaString); j++ {
+			if angkaString[i] == angkaString[j] {
+				angkaString[j] = "NULL"
+				break
+			}
+			if j == len(angkaString)-1 && angkaString[i] != "NULL" {
+				checkAngka = append(checkAngka, angkaString[i])
+			}
+			if i == len(angkaString)-2 && angkaString[j] != "NULL" {
+				checkAngka = append(checkAngka, angkaString[j])
+			}
+		}
+	}
+
+	var t = []int{}
+	for _, i := range checkAngka {
 		j, err := strconv.Atoi(i)
 		if err != nil {
 			panic(err)
 		}
-		t2 = append(t2, j)
+		t = append(t, j)
 	}
-	
+	return t
+
 }
 
 
