@@ -1,17 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 
 
 func palindrome(input string) bool {
-		for i := 0; i < len(input); i++ {
-			j := len(input)-1-i
-			if input[i] != input[j] {
-				return false   
-			}
+		// for i := 0; i < len(input); i++ {
+		// 	j := len(input)-1-i
+		// 	if input[i] != input[j] {
+		// 		return false   
+		// 	}
+		// }
+		// return true
+
+		words := strings.Split(input, "")
+		var reversed string = ""
+
+		for i := len(words) - 1; i >= 0; i-- {
+			reversed += words[i]
 		}
-		return true
+		return reversed == input
 	}
 
 

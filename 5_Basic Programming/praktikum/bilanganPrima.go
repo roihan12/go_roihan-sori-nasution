@@ -2,18 +2,30 @@ package main
 
 import "fmt"
 
-
-
+// Fungsi mengecek bilangan prima
 func primeNumber(number int) bool {
-	var bil bool = true;
+	// var bil bool = true;
+
+	// for i := 2; i < number; i++ {
+	// 		if number%i == 0 {
+	// 			bil = false;
+	// 		}
+	// 	}            
+
+	// return bil
+
+	if number == 1 {
+		return false
+	}
 
 	for i := 2; i < number; i++ {
-			if number%i == 0 {
-				bil = false;
-			}
-		}            
+		if number%i == 0 {
+			return false
+		}
 
-	return bil
+	}
+
+	return true
 }
 
 

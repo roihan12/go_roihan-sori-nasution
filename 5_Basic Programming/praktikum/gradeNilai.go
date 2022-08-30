@@ -8,9 +8,9 @@ func main() {
 	var namaSiswa string
 
 
-	fmt.Print("Nama Siswa : ")
+	fmt.Print("Masukkan Nama Siswa : ")
 	fmt.Scanln(&namaSiswa)
-	fmt.Print("Nilai Siswa : ")
+	fmt.Print("Masukkan Nilai Siswa : ")
 	fmt.Scanln(&nilaiSiswa)
 
 	// Precess: Your Solution Code Here
@@ -28,4 +28,22 @@ func main() {
 	} else if nilaiSiswa <= 34 {
 		fmt.Println("Nilai E")
 	}
+
+
+	// cara 2 
+
+	// switch  {
+	// case nilaiSiswa >= 80:
+	// 	fmt.Println("A")
+	// case nilaiSiswa >= 65:
+	// 	fmt.Println("B")
+	// case nilaiSiswa >= 50:
+	// 	fmt.Println("C")
+	// case nilaiSiswa >= 35:
+	// 	fmt.Println("D")
+	// case nilaiSiswa >= 34:
+	// 	fmt.Println("E")
+
+	// }
+	
 }
