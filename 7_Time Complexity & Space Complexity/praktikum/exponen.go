@@ -6,10 +6,10 @@ import (
 )
 
 func pow(x,n int) int{
-     angka1 := float64(x)
-     angka2 := float64(n)
+   //   angka1 := float64(x)
+   //   angka2 := float64(n)
     
-    count := math.Pow(angka1, angka2)
+    count := math.Pow(float64(x), float64(n))
 
     var result int = int(count)
 
