@@ -4,23 +4,39 @@ import "fmt"
 
 func main() {
 
-	var a = [5]int{11, -4, 7, 8, -10}
-	min, max := findMinAndMax(a)
-	fmt.Print("Min: ", min)
-	fmt.Print("Max: ", max)
+	fmt.Println(FindMinAndMax([]int{5, 7, 4, -2, -1, 8}))
+
+	fmt.Println(FindMinAndMax([]int{2, -5, -4, 22, 7, 7}))
+
+	fmt.Println(FindMinAndMax([]int{4, 3, 9, 4, -21, 7}))
+	
+	fmt.Println(FindMinAndMax([]int{-1, 5, 6, 4, 2, 18}))
+
+	fmt.Println(FindMinAndMax([]int{-2, 5, -7, 4, 7, -20}))
 
 }
 
-func findMinAndMax(a [5]int) (min int, max int) {
+func FindMinAndMax(arr []int) string {
+
+	MinAndMax:= func (a []int) (min int, max int, indexMin int, indexMax int) {
+
 	min = a[0]
 	max = a[0]
-	for _, value := range a {
+	indexMin , indexMax = 0, 0
+	for i, value := range a {
 		if value < min {
 			min = value
+			indexMin = i
 		}
 		if value > max {
 			max = value
+			indexMax = i
 		}
 	}
-	return min, max
+	return min, max, indexMax, indexMin
+}
+
+	min, max, indexMax, indexMin := MinAndMax(arr)
+	result := fmt.Sprintf("min: %d index: %d max: %d index: %d", min, indexMin, max, indexMax)
+	return result
 }
