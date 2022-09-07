@@ -1,23 +1,58 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	fmt.Println(Prima(1))
-	fmt.Println(Prima(5))
-	fmt.Println(Prima(8))
-	fmt.Println(Prima(9))
-	fmt.Println(Prima(10))
+	fmt.Println(primeX(1))
+	fmt.Println(primeX(5))
+	fmt.Println(primeX(8))
+	fmt.Println(primeX(9))
+	fmt.Println(primeX(10))
 }
 
-func Prima(number int) int {
 
-	slice := []int{2, 3, 5, 7, 11, 13, 17, 19, 23, 29}
 
-	for i, val := range slice {
-		if i + 1 == number {
-			return val
-}
+func primeX(n int)  int {
+	if n == 1 {
+		return 2
 	}
-	return -1
+
+	if n < 1 {
+		return 0
+	}
+
+	var countPrime int = 1
+	var i int = 3
+
+	for countPrime <= n {
+		if checkPrime(i) {
+			countPrime++
+		}
+		i++
+	}
+	return i - 1
+	
+}
+
+func checkPrime (number int) bool {
+	if number == 1 {
+		return false
+
+	}
+
+	if number%2 == 0 {
+		return false
+	}
+
+	for i := 3; i < int(math.Sqrt(float64(number))); i += 2 {
+		if number%i == 0 {
+			return false
+			
+		}
+	}
+
+	return true
 }
