@@ -1,0 +1,13 @@
+Problem 2 - Query 
+
+1. Redis
+HGETALL users
+KEYS *users*
+KEYS *
+
+2. Neo4j
+MATCH (u:users)
+RETURN u
+
+3.Cassandra
+select * from users
