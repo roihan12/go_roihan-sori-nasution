@@ -1,0 +1,6 @@
+mode: set
+unit-testing/main.go:3.24,5.2 1 1
+unit-testing/main.go:6.29,8.2 1 1
+unit-testing/main.go:9.29,11.2 1 1
+unit-testing/main.go:12.29,14.2 1 1
+unit-testing/main.go:16.14,18.2 0 0
