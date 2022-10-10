@@ -13,22 +13,8 @@ type Repository struct {
 	mock.Mock
 }
 
-// GetAllusers provides a mock function with given fields:
-func (_m *Repository) GetAllusers() users.Domain {
-	ret := _m.Called()
-
-	var r0 users.Domain
-	if rf, ok := ret.Get(0).(func() users.Domain); ok {
-		r0 = rf()
-	} else {
-		r0 = ret.Get(0).(users.Domain)
-	}
-
-	return r0
-}
-
-// GetByEmail provides a mock function with given fields: userDomain
-func (_m *Repository) GetByEmail(userDomain *users.Domain) users.Domain {
+// CreateUser provides a mock function with given fields: userDomain
+func (_m *Repository) CreateUser(userDomain *users.Domain) users.Domain {
 	ret := _m.Called(userDomain)
 
 	var r0 users.Domain
@@ -41,8 +27,24 @@ func (_m *Repository) GetByEmail(userDomain *users.Domain) users.Domain {
 	return r0
 }
 
-// Register provides a mock function with given fields: userDomain
-func (_m *Repository) Register(userDomain *users.Domain) users.Domain {
+// GetAllusers provides a mock function with given fields:
+func (_m *Repository) GetAllusers() []users.Domain {
+	ret := _m.Called()
+
+	var r0 []users.Domain
+	if rf, ok := ret.Get(0).(func() []users.Domain); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]users.Domain)
+		}
+	}
+
+	return r0
+}
+
+// GetByEmail provides a mock function with given fields: userDomain
+func (_m *Repository) GetByEmail(userDomain *users.Domain) users.Domain {
 	ret := _m.Called(userDomain)
 
 	var r0 users.Domain

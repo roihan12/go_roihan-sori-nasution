@@ -72,11 +72,9 @@ func SeedUser(db *gorm.DB) users.User {
 func CleanSeeders(db *gorm.DB) {
 	db.Exec("SET FOREIGN_KEY_CHECKS = 0")
 
-	categoryResult := db.Exec("DELETE FROM categories")
-	itemResult := db.Exec("DELETE FROM notes")
 	userResult := db.Exec("DELETE FROM users")
 
-	var isFailed bool = itemResult.Error != nil || userResult.Error != nil || categoryResult.Error != nil
+	var isFailed bool = userResult.Error != nil
 
 	if isFailed {
 		panic(errors.New("error when cleaning up seeders"))

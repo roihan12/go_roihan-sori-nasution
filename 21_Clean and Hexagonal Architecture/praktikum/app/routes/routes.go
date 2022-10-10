@@ -18,7 +18,7 @@ func (cl *ControllerList) RouteRegister(e *echo.Echo) {
 
 	users := e.Group("/api/v1/users")
 
-	users.POST("/register", cl.AuthController.Register)
+	users.POST("/register", cl.AuthController.CreateUser)
 	users.POST("/login", cl.AuthController.Login)
 
 	auth := e.Group("/api/v1/users", middleware.JWTWithConfig(cl.JWTMiddleware))

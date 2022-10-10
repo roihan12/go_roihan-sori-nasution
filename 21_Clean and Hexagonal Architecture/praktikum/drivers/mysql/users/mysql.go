@@ -18,7 +18,7 @@ func NewMySQLRepository(conn *gorm.DB) users.Repository {
 	}
 }
 
-func (ur *userRepository) Register(userDomain *users.Domain) users.Domain {
+func (ur *userRepository) CreateUser(userDomain *users.Domain) users.Domain {
 	password, _ := bcrypt.GenerateFromPassword([]byte(userDomain.Password), bcrypt.DefaultCost)
 
 	rec := FromDomain(userDomain)
@@ -52,11 +52,17 @@ func (ur *userRepository) GetByEmail(userDomain *users.Domain) users.Domain {
 	return user.ToDomain()
 }
 
-func (user *userRepository) GetAllusers() users.Domain {
+func (ur *userRepository) GetAllusers() []users.Domain {
 
-	var users User
+	var rec []User
 
-	user.conn.Find(&users)
+	ur.conn.Find(&rec)
 
-	return users.ToDomain()
+	userDomain := []users.Domain{}
+
+	for _, user := range rec {
+		userDomain = append(userDomain, user.ToDomain())
+	}
+
+	return userDomain
 }

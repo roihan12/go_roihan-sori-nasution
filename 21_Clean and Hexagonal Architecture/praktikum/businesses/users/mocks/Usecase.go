@@ -13,15 +13,31 @@ type Usecase struct {
 	mock.Mock
 }
 
-// GetAllusers provides a mock function with given fields:
-func (_m *Usecase) GetAllusers() users.Domain {
-	ret := _m.Called()
+// CreateUser provides a mock function with given fields: userDomain
+func (_m *Usecase) CreateUser(userDomain *users.Domain) users.Domain {
+	ret := _m.Called(userDomain)
 
 	var r0 users.Domain
-	if rf, ok := ret.Get(0).(func() users.Domain); ok {
-		r0 = rf()
+	if rf, ok := ret.Get(0).(func(*users.Domain) users.Domain); ok {
+		r0 = rf(userDomain)
 	} else {
 		r0 = ret.Get(0).(users.Domain)
+	}
+
+	return r0
+}
+
+// GetAllusers provides a mock function with given fields:
+func (_m *Usecase) GetAllusers() []users.Domain {
+	ret := _m.Called()
+
+	var r0 []users.Domain
+	if rf, ok := ret.Get(0).(func() []users.Domain); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]users.Domain)
+		}
 	}
 
 	return r0
@@ -36,20 +52,6 @@ func (_m *Usecase) Login(userDomain *users.Domain) string {
 		r0 = rf(userDomain)
 	} else {
 		r0 = ret.Get(0).(string)
-	}
-
-	return r0
-}
-
-// Register provides a mock function with given fields: userDomain
-func (_m *Usecase) Register(userDomain *users.Domain) users.Domain {
-	ret := _m.Called(userDomain)
-
-	var r0 users.Domain
-	if rf, ok := ret.Get(0).(func(*users.Domain) users.Domain); ok {
-		r0 = rf(userDomain)
-	} else {
-		r0 = ret.Get(0).(users.Domain)
 	}
 
 	return r0

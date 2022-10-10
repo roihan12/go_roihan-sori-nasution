@@ -14,8 +14,8 @@ func NewUserUsecase(ur Repository, jwtAuth *middlewares.ConfigJWT) Usecase {
 	}
 }
 
-func (uu *UserUsecase) Register(userDomain *Domain) Domain {
-	return uu.userRepository.Register(userDomain)
+func (uu *UserUsecase) CreateUser(userDomain *Domain) Domain {
+	return uu.userRepository.CreateUser(userDomain)
 }
 
 func (uu *UserUsecase) Login(userDomain *Domain) string {
@@ -30,6 +30,6 @@ func (uu *UserUsecase) Login(userDomain *Domain) string {
 	return token
 }
 
-func (uu *UserUsecase) GetAllusers() Domain {
+func (uu *UserUsecase) GetAllusers() []Domain {
 	return uu.userRepository.GetAllusers()
 }

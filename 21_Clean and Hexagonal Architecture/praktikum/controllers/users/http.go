@@ -21,7 +21,7 @@ func NewAuthController(authUC users.Usecase) *AuthController {
 	}
 }
 
-func (ctrl *AuthController) Register(c echo.Context) error {
+func (ctrl *AuthController) CreateUser(c echo.Context) error {
 	userInput := request.User{}
 
 	if err := c.Bind(&userInput); err != nil {
@@ -38,7 +38,7 @@ func (ctrl *AuthController) Register(c echo.Context) error {
 		})
 	}
 
-	user := ctrl.authUseCase.Register(userInput.ToDomain())
+	user := ctrl.authUseCase.CreateUser(userInput.ToDomain())
 
 	return c.JSON(http.StatusCreated, response.FromDomain(user))
 }
