@@ -4,8 +4,7 @@ import (
 	"fmt"
 )
 
-
-func Caesar( offset int, input string) string {
+func Caesar(offset int, input string) string {
 
 	offsetKey := byte(offset%26+26) % 26
 
